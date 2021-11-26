@@ -34,13 +34,14 @@ namespace sortowanie
         
 
          var MyList = new List<string>();
-            using (var streamReader = File.OpenText('C: \Users\student\Desktop\liczby.txt')
+            using (var streamReader = File.OpenText("C:\\Users\\student\\Desktop\\liczby.txt"))
             {
                 var s = string.Empty;
                 while ((s = streamReader.ReadLine()) != null)
                     MyList.Add(s);
             }
             myListbox.ItemsSource = MyList;
+            MyList.ForEach(item => Debug.WriteLine(item));
         }
 
         private void btn_start_Click(object sender, RoutedEventArgs e)
