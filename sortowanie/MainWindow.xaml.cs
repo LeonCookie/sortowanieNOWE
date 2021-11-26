@@ -6,6 +6,10 @@ using System;
 using System.IO;
 using System.Windows;
 using Microsoft.Win32;
+using System.Data;
+using System.Linq;
+using System.Collections.Generic;
+
 namespace sortowanie
 {
     /// <summary>
@@ -13,6 +17,8 @@ namespace sortowanie
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string strPath;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -20,8 +26,28 @@ namespace sortowanie
 
         }
 
+        private void btn_load_Click(object sender, RoutedEventArgs e)
+        {
+        /*OpenFileDialog openFileDialog = new OpenFileDialog();
+        if (openFileDialog.ShowDialog() == true)
+            txtEditor.Text = File.ReadAllText(openFileDialog.FileName); */
+        
+
+         var MyList = new List<string>();
+            using (var streamReader = File.OpenText('C: \Users\student\Desktop\liczby.txt')
+            {
+                var s = string.Empty;
+                while ((s = streamReader.ReadLine()) != null)
+                    MyList.Add(s);
+            }
+            myListbox.ItemsSource = MyList;
+        }
+
         private void btn_start_Click(object sender, RoutedEventArgs e)
         {
+
+            
+             
             Stopwatch stopwatch = new Stopwatch();
 
             stopwatch.Start();
@@ -38,18 +64,7 @@ namespace sortowanie
            
         }
 
-        private void btn_load_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Multiselect = true;
-            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            if (openFileDialog.ShowDialog() == true)
-            {
-                foreach (string filename in openFileDialog.FileNames)
-                    lbFiles.Items.Add(Path.GetFileName(filename));
-            }
-        }
+       
 
         private void lbFiles_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
