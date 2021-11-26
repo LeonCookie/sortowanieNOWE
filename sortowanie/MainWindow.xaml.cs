@@ -2,6 +2,10 @@
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Win32;
+using System;
+using System.IO;
+using System.Windows;
+using Microsoft.Win32;
 namespace sortowanie
 {
     /// <summary>
@@ -37,8 +41,19 @@ namespace sortowanie
         private void btn_load_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
+            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (openFileDialog.ShowDialog() == true)
-                //txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
+            {
+                foreach (string filename in openFileDialog.FileNames)
+                    lbFiles.Items.Add(Path.GetFileName(filename));
+            }
+        }
+
+        private void lbFiles_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
