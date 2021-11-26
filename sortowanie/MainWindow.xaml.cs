@@ -34,14 +34,18 @@ namespace sortowanie
         
 
          var MyList = new List<string>();
-            using (var streamReader = File.OpenText("C:\\Users\\student\\Desktop\\liczby.txt"))
+            using (var streamReader = File.OpenText("C:\\Users\\student\\Desktop\\liczby.txt"))// czytanie z pliku
             {
                 var s = string.Empty;
                 while ((s = streamReader.ReadLine()) != null)
-                    MyList.Add(s);
+                    MyList.Add(s);  //sam nwm
             }
             myListbox.ItemsSource = MyList;
-            MyList.ForEach(item => Debug.WriteLine(item));
+            MyList.ForEach(item => Debug.WriteLine(item)); // write every index in debug console
+            Debug.WriteLine("sssss");
+            Debug.WriteLine(MyList[1]);
+
+
         }
 
         private void btn_start_Click(object sender, RoutedEventArgs e)
@@ -54,10 +58,7 @@ namespace sortowanie
             stopwatch.Start();
             //sortowani
 
-            for(int i=1; i < 1000; i++)
-            {
-                Debug.WriteLine("heheh");
-            }
+           
 
             stopwatch.Stop();
 
