@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
-        <Button x:Name="btn_insert" Content="Przez wstawaienie" HorizontalAlignment="Left" Margin="87,93,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.226,-0.581" Click="btn_start_Click"/>
+        <Button x:Name="btn_insert" Content="Przez wstawaienie" HorizontalAlignment="Left" Margin="34,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.226,-0.581" Click="btn_start_Click"/>
         <Button x:Name="btn_load" Content="wybierz" HorizontalAlignment="Left" Margin="266,88,0,0" VerticalAlignment="Top" Click="btn_load_Click"/>
-        <ListBox x:Name="myListbox" Margin="220,118,388,163"/>
+        <ListBox x:Name="myListbox" Margin="192,118,416,163"/>
         <ListBox x:Name="myListbox_Sort" Margin="532,118,76,163"/>
         <TextBlock HorizontalAlignment="Left" Margin="594,82,0,0" Text="Posortowane" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxTime" HorizontalAlignment="Left" Margin="656,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="556,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Height="16"><Run Text="Czas"/><Run Text="(w ms):"/><LineBreak/><Run/></TextBlock>
 
     </Grid>
 </Window>

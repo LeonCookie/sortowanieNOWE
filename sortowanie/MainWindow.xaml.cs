@@ -25,6 +25,8 @@ namespace sortowanie
 
 
         }
+        //zmienne
+        List<String> Lista = new List<String>(); // nasza lista
 
         private void btn_load_Click(object sender, RoutedEventArgs e)
         {
@@ -33,37 +35,65 @@ namespace sortowanie
             txtEditor.Text = File.ReadAllText(openFileDialog.FileName); */
         
 
-         var MyList = new List<string>();
-            using (var streamReader = File.OpenText("C:\\Users\\student\\Desktop\\liczby.txt"))// czytanie z pliku
+        
+            using (var streamReader = File.OpenText("C:\\Users\\liczby.txt"))// czytanie z pliku
             {
                 var s = string.Empty;
                 while ((s = streamReader.ReadLine()) != null)
-                    MyList.Add(s);  //sam nwm
+                    Lista.Add(s);  //sam nwm
             }
-            myListbox.ItemsSource = MyList;
-            MyList.ForEach(item => Debug.WriteLine(item)); // write every index in debug console
-            Debug.WriteLine("sssss");
-            Debug.WriteLine(MyList[1]);
+            myListbox.ItemsSource = Lista;
+            //Lista.ForEach(item => Debug.WriteLine(item)); //wypisane kazdego indexu listy
+            /* Debug.WriteLine("===");
+             Debug.WriteLine(Lista[1]); */ //sprawdzenie czy lista dobrze funkcjonuje
 
 
         }
 
-        private void btn_start_Click(object sender, RoutedEventArgs e)
+
+        private void btn_start_Click(object sender, RoutedEventArgs e) //button insert
         {
 
-            
-             
-            Stopwatch stopwatch = new Stopwatch();
+            int i=0;
+            int j=0;
+          
+
+
+            List<int> intList = new List<int>();
+            for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
+            {
+                intList.Add(int.Parse(Lista[o]));
+
+            }
+            intList.ForEach(item => Debug.WriteLine(item));
+
+            Stopwatch stopwatch = new Stopwatch();//zegar
 
             stopwatch.Start();
-            //sortowani
+            //sortowanie
 
-           
+            for (j = intList[intList.Count - 2]; j >= 0; j--)
+            {
+                
+                int x = intList[j];
+                i = j + 1;
+                
+                while ((i < intList.Count) && (x > intList[i]))
+                {
+                    intList[i - 1] = intList[i];
+                    i++;
+                }
+                intList[i - 1] = x;
+
+            }
+            myListbox_Sort.ItemsSource = intList;
 
             stopwatch.Stop();
 
             System.Diagnostics.Debug.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds);
-           
+            TextBoxTime.Text = "" + stopwatch.ElapsedMilliseconds;
+
+
         }
 
        
