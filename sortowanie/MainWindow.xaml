@@ -8,22 +8,23 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
         <Button x:Name="btn_load" Content="wybierz" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="btn_load_Click"/>
-        <ListBox x:Name="myListbox" Margin="10,35,718,164"/>
+        <ListBox x:Name="myListbox" Margin="10,35,0,164" HorizontalAlignment="Left" Width="70"/>
         <TextBlock HorizontalAlignment="Left" Margin="246,12,0,0" Text="Posortowane" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TabControl Margin="246,35,0,0" >
             <TabItem Header="Wstawienie">
                 <Grid Background="#FFE5E5E5">
 
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="86*"/>
+                        <ColumnDefinition Width="14*"/>
                         <ColumnDefinition Width="12*"/>
-                        <ColumnDefinition Width="105*"/>
-                        <ColumnDefinition Width="13*"/>
-                        <ColumnDefinition Width="446*"/>
+                        <ColumnDefinition Width="424*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="myListbox_Sort" Margin="6,43,297,7" Grid.ColumnSpan="4" Grid.RowSpan="2"/>
-                    <Button x:Name="btn_insert" Content="Przez wstawaienie" HorizontalAlignment="Left" Margin="3,18,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.226,-0.581" Click="btn_start_Click" Grid.ColumnSpan="2"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="23,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Height="16" Grid.Column="3"><Run Text="Czas"/><Run Text="(w ms):"/><LineBreak/><Run/></TextBlock>
-                    <TextBox x:Name="TextBoxTime" HorizontalAlignment="Left" Margin="123,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" Grid.Column="3"/>
+                    <ListBox x:Name="myListbox_Sort" Margin="6,43,297,7" Grid.ColumnSpan="5"/>
+                    <Button x:Name="btn_insert" Content="Przez wstawaienie" HorizontalAlignment="Left" Margin="3,18,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.226,-0.581" Click="btn_start_Click" Grid.ColumnSpan="3"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="23,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Height="16" Grid.Column="4"><Run Text="Czas"/><Run Text="(w ms):"/><LineBreak/><Run/></TextBlock>
+                    <TextBox x:Name="TextBoxTime" HorizontalAlignment="Left" Margin="123,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" Grid.Column="4"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Bąbelkowe" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="69">
@@ -41,16 +42,22 @@
                     <Button x:Name="btn_bomb_2" Content="Wersja 2" Grid.Column="1" HorizontalAlignment="Left" Margin="133,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.53,-0.547" Width="77" Click="btn_bomb_2_Click"/>
                     <ListBox x:Name="myListBox_Sort_bomb_3" Margin="228,74,228,74" Grid.Column="1"/>
                     <TextBox x:Name="TextBoxTime_Bomb_3" Grid.Column="1" HorizontalAlignment="Left" Margin="231,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" IsEnabled="False"/>
-                    <Button x:Name="btn_bomb_3" Content="Wersja 3" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.53,-0.547" Width="77" Click="btn_bomb_3_Click"/>
+                    <Button x:Name="btn_bomb_3" Content="Wersja 3" Grid.Column="1" HorizontalAlignment="Left" Margin="235,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.53,-0.547" Width="77" Click="btn_bomb_3_Click"/>
                     <ListBox x:Name="myListBox_Sort_bomb_4" Margin="321,74,135,74" Grid.Column="1"/>
                     <TextBox x:Name="TextBoxTime_Bomb_4" Grid.Column="1" HorizontalAlignment="Left" Margin="320,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" IsEnabled="False"/>
                     <ListBox x:Name="myListBox_Sort_bomb_5" Margin="416,74,40,74" Grid.Column="1"/>
                     <TextBox x:Name="TextBoxTime_Bomb_5" Grid.Column="1" HorizontalAlignment="Left" Margin="415,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" IsEnabled="False"/>
                     <Button x:Name="btn_bomb_4" Content="Wersja 4" Grid.Column="1" HorizontalAlignment="Left" Margin="321,10,0,0" VerticalAlignment="Top" Width="76" Click="btn_bomb_4_Click"/>
-                    <Button x:Name="btn_bomb_5" Content="Wersja 5" Grid.Column="1" HorizontalAlignment="Left" Margin="414,10,0,0" VerticalAlignment="Top" Width="78"/>
+                    <Button x:Name="btn_bomb_5" Content="Wersja 5" Grid.Column="1" HorizontalAlignment="Left" Margin="414,10,0,0" VerticalAlignment="Top" Width="78" Click="btn_bomb_5_Click"/>
 
                 </Grid>
 
+            </TabItem>
+            <TabItem Header="Wstawienie">
+                <Grid Background="#FFE5E5E5">
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="22,21,0,0" VerticalAlignment="Top"/>
+
+                </Grid>
             </TabItem>
         </TabControl>
 

@@ -107,6 +107,8 @@ namespace sortowanie
 
         }
 
+       
+
         private void btn_bomb_1_Click(object sender, RoutedEventArgs e)
         {
            
@@ -269,7 +271,57 @@ namespace sortowanie
                     TextBoxTime_Bomb_4.Text = "" + stopwatch.ElapsedMilliseconds;
 
                 }
+
             }
+        }
+        private void btn_bomb_5_Click(object sender, RoutedEventArgs e)
+        {
+            List<int> intList = new List<int>();
+            for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
+            {
+                intList.Add(int.Parse(Lista[o]));
+
+            }
+            Stopwatch stopwatch = new Stopwatch();//zegar
+
+            stopwatch.Start();
+            //sortowanie
+
+
+            pmin = 0; pmax = intList.Count - 2;
+            do
+            {
+                p = -1;
+                for (i = pmin; i <= pmax; i++)
+                    if (intList[i] > intList[i + 1])
+                    {
+                        intList[i] = intList[i] + intList[i + 1];
+                        intList[i + 1] = intList[i] - intList[i + 1];
+                        intList[i] = intList[i] - intList[i + 1];
+                        p = i;
+                    }
+                if (p < 0) break;
+                pmax = p - 1;
+                p = -1;
+                for (i = pmax; i >= pmin; i--)
+                    if (intList[i] > intList[i + 1])
+                    {
+                        intList[i] = intList[i] + intList[i + 1];
+                        intList[i + 1] = intList[i] - intList[i + 1];
+                        intList[i] = intList[i] - intList[i + 1];
+                        p = i;
+                    }
+                pmin = p + 1;
+            } while (p >= 0);
+
+
+
+
+            myListBox_Sort_bomb_5.ItemsSource = intList;
+            stopwatch.Stop();
+
+
+            TextBoxTime_Bomb_5.Text = "" + stopwatch.ElapsedMilliseconds;
         }
     }
  }
