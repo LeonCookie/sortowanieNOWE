@@ -24,6 +24,7 @@ namespace sortowanie
         List<String> Lista = new List<String>(); // nasza lista
         int i = 0;
         int j = 0;//dane potrzebne przy sortowanie tzw zmienne pomocnicze
+        int p = 0;
 
         private void btn_load_Click(object sender, RoutedEventArgs e)
         {
@@ -138,7 +139,7 @@ namespace sortowanie
             myListBox_Sort_bomb_1.ItemsSource = intList;
             stopwatch.Stop();
 
-            //System.Diagnostics.Debug.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds); - wypisanie czasu w konsoli
+            
             TextBoxTime_Bomb_1.Text = "" + stopwatch.ElapsedMilliseconds;
 
         }
@@ -175,9 +176,53 @@ namespace sortowanie
                 myListBox_Sort_bomb_2.ItemsSource = intList;
                 stopwatch.Stop();
 
-                //System.Diagnostics.Debug.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds); - wypisanie czasu w konsoli
+                
                 TextBoxTime_Bomb_2.Text = "" + stopwatch.ElapsedMilliseconds;
 
+            }
+        }
+
+        private void btn_bomb_3_Click(object sender, RoutedEventArgs e)
+        {
+            {
+                {
+
+                    List<int> intList = new List<int>();
+                    for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
+                    {
+                        intList.Add(int.Parse(Lista[o]));
+
+                    }
+                    Stopwatch stopwatch = new Stopwatch();//zegar
+
+                    stopwatch.Start();
+                    //sortowanie
+
+
+                    for (j = intList.Count - 1; j > 0; j--)
+                    {
+                        p = 1;
+                        for (i = 0; i < j; i++)
+                            if (intList[i] > intList[i + 1])
+                            {
+                                intList[i] = intList[i] + intList[i + 1];
+                                intList[i + 1] = intList[i] - intList[i + 1];
+                                intList[i] = intList[i] - intList[i + 1];
+                                p = 0;
+                            }
+                        if (p==1) break;
+                    }
+
+
+
+
+                    myListBox_Sort_bomb_3.ItemsSource = intList;
+                    stopwatch.Stop();
+
+                   
+                    TextBoxTime_Bomb_3.Text = "" + stopwatch.ElapsedMilliseconds;
+
+                }
             }
         }
     }
