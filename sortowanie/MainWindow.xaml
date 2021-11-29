@@ -7,13 +7,42 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
-        <Button x:Name="btn_insert" Content="Przez wstawaienie" HorizontalAlignment="Left" Margin="34,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.226,-0.581" Click="btn_start_Click"/>
-        <Button x:Name="btn_load" Content="wybierz" HorizontalAlignment="Left" Margin="266,88,0,0" VerticalAlignment="Top" Click="btn_load_Click"/>
-        <ListBox x:Name="myListbox" Margin="192,118,416,163"/>
-        <ListBox x:Name="myListbox_Sort" Margin="532,118,76,163"/>
-        <TextBlock HorizontalAlignment="Left" Margin="594,82,0,0" Text="Posortowane" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxTime" HorizontalAlignment="Left" Margin="656,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <TextBlock HorizontalAlignment="Left" Margin="556,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Height="16"><Run Text="Czas"/><Run Text="(w ms):"/><LineBreak/><Run/></TextBlock>
+        <Button x:Name="btn_load" Content="wybierz" HorizontalAlignment="Left" Margin="34,33,0,0" VerticalAlignment="Top" Click="btn_load_Click"/>
+        <ListBox x:Name="myListbox" Margin="34,63,574,217"/>
+        <TextBlock HorizontalAlignment="Left" Margin="323,35,0,0" Text="Posortowane" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TabControl Margin="286,63,-68,-17">
+            <TabItem Header="Wstawienie">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="173*"/>
+                        <RowDefinition Height="16*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="96*"/>
+                        <ColumnDefinition Width="365*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="myListbox_Sort" Margin="6,43,297,7" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+                    <Button x:Name="btn_insert" Content="Przez wstawaienie" HorizontalAlignment="Left" Margin="3,18,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.226,-0.581" Click="btn_start_Click" Grid.ColumnSpan="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="23,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Height="16" Grid.Column="2"><Run Text="Czas"/><Run Text="(w ms):"/><LineBreak/><Run/></TextBlock>
+                    <TextBox x:Name="TextBoxTime" HorizontalAlignment="Left" Margin="123,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" Grid.Column="2"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Bąbelkowe">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="133*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="64" Height="16" Grid.ColumnSpan="2"><Run Text="Czas"/><Run Text="(w ms):"/><LineBreak/><Run/></TextBlock>
+                    <Button x:Name="btn_bomb_1" Content="Wersja 1" HorizontalAlignment="Left" Margin="34,10,0,0" VerticalAlignment="Top" Width="77" Click="btn_bomb_1_Click" Grid.Column="1"/>
+                    <ListBox x:Name="myListBox_Sort_bomb_1" Margin="34,74,421,74" Grid.Column="1"/>
+                    <TextBox x:Name="TextBoxTime_Bomb_1" Grid.Column="1" HorizontalAlignment="Left" Margin="34,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" IsEnabled="False"/>
+
+                </Grid>
+
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>

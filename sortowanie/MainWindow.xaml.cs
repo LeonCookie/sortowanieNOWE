@@ -108,5 +108,28 @@ namespace sortowanie
         {
 
         }
+
+        private void btn_bomb_1_Click(object sender, RoutedEventArgs e)
+        {
+            List<int> intList = new List<int>();
+            for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
+            {
+                intList.Add(int.Parse(Lista[o]));
+
+            }
+            Stopwatch stopwatch = new Stopwatch();//zegar
+
+            stopwatch.Start();
+            //sortowanie
+
+
+             myListBox_Sort_bomb_1.ItemsSource = intList;
+            stopwatch.Stop();
+
+            //System.Diagnostics.Debug.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds); - wypisanie czasu w konsoli
+            TextBoxTime_Bomb_1.Text = "" + stopwatch.ElapsedMilliseconds;
+
+        }
+
     }
 }
