@@ -22,9 +22,8 @@ namespace sortowanie
         }
         //zmienne
         List<String> Lista = new List<String>(); // nasza lista
-        int i = 0;
-        int j = 0;//dane potrzebne przy sortowanie tzw zmienne pomocnicze
-        int p = 0;
+        int i,j,p,pmin,pmax = 0;//dane potrzebne przy sortowanie tzw zmienne pomocnicze
+        
 
         private void btn_load_Click(object sender, RoutedEventArgs e)
         {
@@ -225,5 +224,53 @@ namespace sortowanie
                 }
             }
         }
+
+        private void btn_bomb_4_Click(object sender, RoutedEventArgs e)
+        {
+            {
+                {
+
+                    List<int> intList = new List<int>();
+                    for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
+                    {
+                        intList.Add(int.Parse(Lista[o]));
+
+                    }
+                    Stopwatch stopwatch = new Stopwatch();//zegar
+
+                    stopwatch.Start();
+                    //sortowanie
+
+
+                    pmin = 0; pmax = intList.Count - 1;
+                    do
+                    {
+                        p = -1;
+                        for (i = pmin; i < pmax; i++)
+                            if (intList[i] > intList[i + 1])
+                            {
+                                intList[i] = intList[i] + intList[i + 1];
+                                intList[i + 1] = intList[i] - intList[i + 1];
+                                intList[i] = intList[i] - intList[i + 1];
+                                if (p < 0) pmin = i;
+                                p = i;
+                            }
+                        if (pmin>1) pmin--;
+                        pmax = p;
+                    } while (p >= 0);
+
+
+
+
+                    myListBox_Sort_bomb_4.ItemsSource = intList;
+                    stopwatch.Stop();
+
+
+                    TextBoxTime_Bomb_4.Text = "" + stopwatch.ElapsedMilliseconds;
+
+                }
+            }
+        }
     }
-}
+ }
+

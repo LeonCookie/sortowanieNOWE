@@ -7,29 +7,27 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
-        <Button x:Name="btn_load" Content="wybierz" HorizontalAlignment="Left" Margin="34,33,0,0" VerticalAlignment="Top" Click="btn_load_Click"/>
-        <ListBox x:Name="myListbox" Margin="34,63,574,217"/>
-        <TextBlock HorizontalAlignment="Left" Margin="323,35,0,0" Text="Posortowane" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TabControl Margin="286,63,-68,-17">
+        <Button x:Name="btn_load" Content="wybierz" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="btn_load_Click"/>
+        <ListBox x:Name="myListbox" Margin="10,35,718,164"/>
+        <TextBlock HorizontalAlignment="Left" Margin="246,12,0,0" Text="Posortowane" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TabControl Margin="246,35,0,0" >
             <TabItem Header="Wstawienie">
                 <Grid Background="#FFE5E5E5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="173*"/>
-                        <RowDefinition Height="16*"/>
-                    </Grid.RowDefinitions>
+
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="96*"/>
-                        <ColumnDefinition Width="365*"/>
+                        <ColumnDefinition Width="12*"/>
+                        <ColumnDefinition Width="105*"/>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="446*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="myListbox_Sort" Margin="6,43,297,7" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+                    <ListBox x:Name="myListbox_Sort" Margin="6,43,297,7" Grid.ColumnSpan="4" Grid.RowSpan="2"/>
                     <Button x:Name="btn_insert" Content="Przez wstawaienie" HorizontalAlignment="Left" Margin="3,18,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.226,-0.581" Click="btn_start_Click" Grid.ColumnSpan="2"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="23,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Height="16" Grid.Column="2"><Run Text="Czas"/><Run Text="(w ms):"/><LineBreak/><Run/></TextBlock>
-                    <TextBox x:Name="TextBoxTime" HorizontalAlignment="Left" Margin="123,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" Grid.Column="2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="23,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Height="16" Grid.Column="3"><Run Text="Czas"/><Run Text="(w ms):"/><LineBreak/><Run/></TextBlock>
+                    <TextBox x:Name="TextBoxTime" HorizontalAlignment="Left" Margin="123,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" Grid.Column="3"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Bąbelkowe" Margin="-2,0,-2,0">
-                <Grid Background="#FFE5E5E5">
+            <TabItem Header="Bąbelkowe" Margin="-2,0,0,0" HorizontalAlignment="Left" Width="69">
+                <Grid Background="#FFE5E5E5" Height="368" Margin="0,0,-37,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="11*"/>
                         <ColumnDefinition Width="133*"/>
@@ -42,8 +40,14 @@
                     <ListBox x:Name="myListBox_Sort_bomb_2" Margin="133,74,322,74" Grid.Column="1"/>
                     <Button x:Name="btn_bomb_2" Content="Wersja 2" Grid.Column="1" HorizontalAlignment="Left" Margin="133,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.53,-0.547" Width="77" Click="btn_bomb_2_Click"/>
                     <ListBox x:Name="myListBox_Sort_bomb_3" Margin="228,74,228,74" Grid.Column="1"/>
-                    <TextBox x:Name="TextBoxTime_Bomb_3" Grid.Column="1" HorizontalAlignment="Center" Margin="0,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" IsEnabled="False"/>
-                    <Button x:Name="btn_bomb_3" Content="Wersja 3" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="76" Click="btn_bomb_3_Click"/>
+                    <TextBox x:Name="TextBoxTime_Bomb_3" Grid.Column="1" HorizontalAlignment="Left" Margin="231,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" IsEnabled="False"/>
+                    <Button x:Name="btn_bomb_3" Content="Wersja 3" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.53,-0.547" Width="77" Click="btn_bomb_3_Click"/>
+                    <ListBox x:Name="myListBox_Sort_bomb_4" Margin="321,74,135,74" Grid.Column="1"/>
+                    <TextBox x:Name="TextBoxTime_Bomb_4" Grid.Column="1" HorizontalAlignment="Left" Margin="320,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" IsEnabled="False"/>
+                    <ListBox x:Name="myListBox_Sort_bomb_5" Margin="416,74,40,74" Grid.Column="1"/>
+                    <TextBox x:Name="TextBoxTime_Bomb_5" Grid.Column="1" HorizontalAlignment="Left" Margin="415,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" IsEnabled="False"/>
+                    <Button x:Name="btn_bomb_4" Content="Wersja 4" Grid.Column="1" HorizontalAlignment="Left" Margin="321,10,0,0" VerticalAlignment="Top" Width="76" Click="btn_bomb_4_Click"/>
+                    <Button x:Name="btn_bomb_5" Content="Wersja 5" Grid.Column="1" HorizontalAlignment="Left" Margin="414,10,0,0" VerticalAlignment="Top" Width="78"/>
 
                 </Grid>
 
