@@ -38,6 +38,9 @@
                     <Button x:Name="btn_bomb_1" Content="Wersja 1" HorizontalAlignment="Left" Margin="34,10,0,0" VerticalAlignment="Top" Width="77" Click="btn_bomb_1_Click" Grid.Column="1"/>
                     <ListBox x:Name="myListBox_Sort_bomb_1" Margin="34,74,421,74" Grid.Column="1"/>
                     <TextBox x:Name="TextBoxTime_Bomb_1" Grid.Column="1" HorizontalAlignment="Left" Margin="34,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" IsEnabled="False"/>
+                    <TextBox x:Name="TextBoxTime_Bomb_2" Grid.Column="1" HorizontalAlignment="Left" Margin="133,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" IsEnabled="False"/>
+                    <ListBox x:Name="myListBox_Sort_bomb_2" Margin="133,74,322,74" Grid.Column="1"/>
+                    <Button x:Name="btn_bomb_2" Content="Wersja 2" Grid.Column="1" HorizontalAlignment="Left" Margin="133,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.53,-0.547" Width="77" Click="btn_bomb_2_Click"/>
 
                 </Grid>
 

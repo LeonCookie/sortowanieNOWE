@@ -3,11 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.Win32;
 using System;
-using System.IO;
-using System.Windows;
-using Microsoft.Win32;
-using System.Data;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace sortowanie
@@ -27,9 +22,13 @@ namespace sortowanie
         }
         //zmienne
         List<String> Lista = new List<String>(); // nasza lista
+        int i = 0;
+        int j = 0;//dane potrzebne przy sortowanie tzw zmienne pomocnicze
 
         private void btn_load_Click(object sender, RoutedEventArgs e)
         {
+            
+
         OpenFileDialog openFileDialog = new OpenFileDialog();
         if (openFileDialog.ShowDialog() == true)
             {
@@ -60,8 +59,7 @@ namespace sortowanie
         private void btn_start_Click(object sender, RoutedEventArgs e) //button insert
         {
 
-            int i=0;
-            int j=0;
+            
           
 
 
@@ -111,8 +109,7 @@ namespace sortowanie
 
         private void btn_bomb_1_Click(object sender, RoutedEventArgs e)
         {
-            int i = 0;
-            int j = 0;
+           
             List<int> intList = new List<int>();
             for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
             {
@@ -146,5 +143,42 @@ namespace sortowanie
 
         }
 
+        private void btn_bomb_2_Click(object sender, RoutedEventArgs e)
+        {
+            {
+                
+                List<int> intList = new List<int>();
+                for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
+                {
+                    intList.Add(int.Parse(Lista[o]));
+
+                }
+                Stopwatch stopwatch = new Stopwatch();//zegar
+
+                stopwatch.Start();
+                //sortowanie
+
+
+                for (j = intList.Count - 1; j > 0; j--)
+                    for (i = 0; i < j; i++)
+                        if (intList[i] > intList[i + 1]) 
+                        {
+                            //w c++ jest funkcja swap, ktora zamienia wartosci, jednakze tutaj uzyjemy tradycyjnej metody z a i b 
+                            intList[i] = intList[i] + intList[i + 1];
+                            intList[i + 1] = intList[i] - intList[i + 1];
+                            intList[i] = intList[i] - intList[i + 1];
+
+                        }
+
+
+
+                myListBox_Sort_bomb_2.ItemsSource = intList;
+                stopwatch.Stop();
+
+                //System.Diagnostics.Debug.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds); - wypisanie czasu w konsoli
+                TextBoxTime_Bomb_2.Text = "" + stopwatch.ElapsedMilliseconds;
+
+            }
+        }
     }
 }
