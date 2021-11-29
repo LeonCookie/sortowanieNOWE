@@ -111,6 +111,8 @@ namespace sortowanie
 
         private void btn_bomb_1_Click(object sender, RoutedEventArgs e)
         {
+            int i = 0;
+            int j = 0;
             List<int> intList = new List<int>();
             for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
             {
@@ -123,7 +125,20 @@ namespace sortowanie
             //sortowanie
 
 
-             myListBox_Sort_bomb_1.ItemsSource = intList;
+            for (j = 0; j < intList.Count - 1; j++)
+                for (i = 0; i < intList.Count - 1; i++)
+                    if (intList[i] > intList[i + 1])
+                    {
+                       //w c++ jest funkcja swap, ktora zamienia wartosci, jednakze tutaj uzyjemy tradycyjnej metody z a i b 
+                        intList[i] = intList[i] + intList[i + 1];  
+                        intList[i + 1]= intList[i] - intList[i + 1];
+                        intList[i] = intList[i] - intList[i + 1];
+
+                    }
+
+                        
+
+            myListBox_Sort_bomb_1.ItemsSource = intList;
             stopwatch.Stop();
 
             //System.Diagnostics.Debug.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds); - wypisanie czasu w konsoli
