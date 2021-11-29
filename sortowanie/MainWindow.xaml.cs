@@ -78,7 +78,7 @@ namespace sortowanie
             stopwatch.Start();
             //sortowanie
 
-            for (j = intList[intList.Count - 2]; j >= 0; j--)
+            for (j = intList.Count - 2; j >= 0; j--)
             {
                 
                 int x = intList[j];
