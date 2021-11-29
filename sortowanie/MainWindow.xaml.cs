@@ -30,19 +30,25 @@ namespace sortowanie
 
         private void btn_load_Click(object sender, RoutedEventArgs e)
         {
-        /*OpenFileDialog openFileDialog = new OpenFileDialog();
+        OpenFileDialog openFileDialog = new OpenFileDialog();
         if (openFileDialog.ShowDialog() == true)
-            txtEditor.Text = File.ReadAllText(openFileDialog.FileName); */
-        
-
-        
-            using (var streamReader = File.OpenText("C:\\Users\\liczby.txt"))// czytanie z pliku
             {
-                var s = string.Empty;
-                while ((s = streamReader.ReadLine()) != null)
-                    Lista.Add(s);  //sam nwm
+                using (var streamReader = File.OpenText(openFileDialog.FileName))// czytanie z pliku
+                {
+                    var s = string.Empty;
+                    while ((s = streamReader.ReadLine()) != null)
+                        Lista.Add(s);  //sam nwm
+                }
+                myListbox.ItemsSource = Lista;
+                
             }
-            myListbox.ItemsSource = Lista;
+            
+
+
+
+
+
+
             //Lista.ForEach(item => Debug.WriteLine(item)); //wypisane kazdego indexu listy
             /* Debug.WriteLine("===");
              Debug.WriteLine(Lista[1]); */ //sprawdzenie czy lista dobrze funkcjonuje
@@ -65,7 +71,7 @@ namespace sortowanie
                 intList.Add(int.Parse(Lista[o]));
 
             }
-            intList.ForEach(item => Debug.WriteLine(item));
+           // intList.ForEach(item => Debug.WriteLine(item));//wypisanie listy zmienionej e string na int w konsoli
 
             Stopwatch stopwatch = new Stopwatch();//zegar
 
@@ -90,7 +96,7 @@ namespace sortowanie
 
             stopwatch.Stop();
 
-            System.Diagnostics.Debug.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds);
+            //System.Diagnostics.Debug.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds); - wypisanie czasu w konsoli
             TextBoxTime.Text = "" + stopwatch.ElapsedMilliseconds;
 
 
