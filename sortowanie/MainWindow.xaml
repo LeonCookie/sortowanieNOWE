@@ -78,20 +78,28 @@
             </TabItem>
             <TabItem Header="Headsort" Margin="-2,-2,-2,-2">
                 <Grid Background="#FFE5E5E5">
-                    <Button x:Name="btn_headsort" Content="drzewo binarne" HorizontalAlignment="Left" Margin="87,30,0,0" VerticalAlignment="Top" Height="22" Width="86" Click="btn_headsort_Click"/>
-                    <TextBox x:Name="TextBoxTimeHeadsort" HorizontalAlignment="Left" Margin="87,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" IsEnabled="False"/>
+                    <Button x:Name="btn_headsort_tworzenie" Content="tworzenie kopca" HorizontalAlignment="Left" Margin="87,30,0,0" VerticalAlignment="Top" Height="22" Width="113" Click="btn_headsort_Click"/>
+                    <TextBox x:Name="TextBoxTimeHeadsort" HorizontalAlignment="Left" Margin="87,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113" IsEnabled="False"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Czas(w ms):"/><LineBreak/><Run Language="pl-pl"/></TextBlock>
-                    <ListBox x:Name="myListBox_headsort" Margin="87,80,375,93"/>
+                    <ListBox x:Name="myListBox_headsort" Margin="87,80,348,93"/>
                     <TextBox x:Name="TextBoxTimeHeadsort_2" HorizontalAlignment="Left" Margin="226,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
                     <ListBox x:Name="myListBox_headsort_2" Margin="226,86,202,86"/>
+                    <Button x:Name="btn_Headsort_rozbior" Content="rozbior kopca" HorizontalAlignment="Left" Margin="226,30,0,0" VerticalAlignment="Top" Width="120" Click="btn_Headsort_rozbior_Click"/>
+                    <TextBox x:Name="TextBoxTimeHeadsort_3" HorizontalAlignment="Left" Margin="379,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+                    <ListBox x:Name="myListBox_headsort_3" Margin="379,86,49,86"/>
+                    <Button x:Name="btn_Headsort_sortowanie" Content="Sortowanie" HorizontalAlignment="Left" Margin="379,30,0,0" VerticalAlignment="Top" Width="120" Click="btn_Headsort_sortowanie_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header ="Scalenie" Margin="-2,-2,-2,-2">
                 <Grid Background="#FFE5E5E5">
-                    <Button x:Name="btn_scalenie" Content="Start" HorizontalAlignment="Left" Margin="86,27,0,0" VerticalAlignment="Top" Width="120" Click="btn_scalenie_Click"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,52,0,0" Text="Czas(w ms)" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                    <TextBox x:Name="TextBoxTimeScalenie" HorizontalAlignment="Left" Margin="86,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-                    <ListBox x:Name="myListBox_scalenie" Margin="84,74,342,48"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="267*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btn_scalenie" Content="Start" HorizontalAlignment="Left" Margin="72,27,0,0" VerticalAlignment="Top" Width="120" Click="btn_scalenie_Click" Grid.Column="1"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,52,0,0" Text="Czas(w ms)" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="TextBoxTimeScalenie" HorizontalAlignment="Left" Margin="72,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" Grid.Column="1"/>
+                    <ListBox x:Name="myListBox_scalenie" Margin="70,74,342,48" Grid.Column="1"/>
 
                 </Grid>
             </TabItem>

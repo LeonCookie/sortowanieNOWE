@@ -280,6 +280,9 @@ namespace sortowanie
 
             }
         }
+
+        
+
         private void btn_bomb_5_Click(object sender, RoutedEventArgs e)
         {
             List<int> intList = new List<int>();
@@ -331,6 +334,7 @@ namespace sortowanie
         }
 
         
+
         private void btn_select_Click(object sender, RoutedEventArgs e)
         {
             List<int> intList = new List<int>();
@@ -371,16 +375,31 @@ namespace sortowanie
         }
         private void btn_headsort_Click(object sender, RoutedEventArgs e)
         {
+            
             List<int> intList = new List<int>();
             for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
             {
                 intList.Add(int.Parse(Lista[o]));
 
             }
+            int x,k,j;
+            int d= intList.Count + 1;
             Stopwatch stopwatch = new Stopwatch();//zegar
 
             stopwatch.Start();
-            //sortowanie
+            /*
+            for (i = 2; i <= intList.Count; i++)
+            {
+                j = i; k = j / 2;
+                x = d[i];
+                while ((k > 0) && (d[k] < x))
+                {
+                    d[j] = d[k];
+                    j = k; k = j / 2;
+                }
+                d[j] = x;
+            }
+            */
 
 
 
@@ -393,6 +412,19 @@ namespace sortowanie
 
             TextBoxTimeHeadsort.Text = "" + stopwatch.ElapsedMilliseconds;
         }
+        private void btn_Headsort_rozbior_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btn_Headsort_sortowanie_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+
+
+        //scalenie
         private void btn_scalenie_Click(object sender, RoutedEventArgs e)
         {
             
@@ -411,7 +443,8 @@ namespace sortowanie
             void MergeSort(int i_p, int i_k)
             {
                 int i_s, i1, i2, i;
-
+                int N = intList.Count;
+                int[] p = new int [N];
                 i_s = (i_p + i_k + 1) / 2;
                 if (i_s - i_p > 1) MergeSort(i_p, i_s - 1);
                 if (i_k - i_s > 0) MergeSort(i_s, i_k);
@@ -434,6 +467,7 @@ namespace sortowanie
 
             TextBoxTimeScalenie.Text = "" + stopwatch.ElapsedMilliseconds;
         }
+        
     }
  }
 
