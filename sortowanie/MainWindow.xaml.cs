@@ -397,7 +397,7 @@ namespace sortowanie
         {
             
             List<int> intList = new List<int>();
-            List<int> p = new List<int>();
+            
             for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
             {
                 intList.Add(int.Parse(Lista[o]));
