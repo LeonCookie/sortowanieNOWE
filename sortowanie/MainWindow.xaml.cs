@@ -400,6 +400,7 @@ namespace sortowanie
                 d[j] = x;
             }
             */
+            //
 
 
 
