@@ -145,6 +145,8 @@ namespace sortowanie
 
         }
 
+        
+
         private void btn_bomb_2_Click(object sender, RoutedEventArgs e)
         {
             {
@@ -322,6 +324,39 @@ namespace sortowanie
 
 
             TextBoxTime_Bomb_5.Text = "" + stopwatch.ElapsedMilliseconds;
+        }
+        private void btn_select_Click(object sender, RoutedEventArgs e)
+        {
+            List<int> intList = new List<int>();
+            for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
+            {
+                intList.Add(int.Parse(Lista[o]));
+
+            }
+            Stopwatch stopwatch = new Stopwatch();//zegar
+
+            stopwatch.Start();
+            //sortowanie
+
+            for (j = 0; j < intList.Count - 1; j++)
+            {
+                pmin = j;
+                for (i = j + 1; i < intList.Count; i++)
+                    if (intList[i] < intList[pmin]){
+                        pmin = i;
+                        
+                        intList[pmin] = intList[pmin] + intList[j];
+                        intList[i + 1] = intList[pmin] - intList[j];
+                        intList[pmin] = intList[pmin] - intList[j];
+                    }
+                
+            }
+
+            myListBox_select.ItemsSource = intList;
+            stopwatch.Stop();
+
+
+            TextTimeBoxSelect.Text = "" + stopwatch.ElapsedMilliseconds;
         }
     }
  }
