@@ -325,6 +325,8 @@ namespace sortowanie
 
             TextBoxTime_Bomb_5.Text = "" + stopwatch.ElapsedMilliseconds;
         }
+
+        
         private void btn_select_Click(object sender, RoutedEventArgs e)
         {
             List<int> intList = new List<int>();
@@ -337,26 +339,31 @@ namespace sortowanie
 
             stopwatch.Start();
             //sortowanie
-
-            for (j = 0; j < intList.Count - 1; j++)
+            void Sortuj_szybko(int lewy, int prawy)
             {
-                pmin = j;
-                for (i = j + 1; i < intList.Count; i++)
-                    if (intList[i] < intList[pmin]){
-                        pmin = i;
-                        
-                        intList[pmin] = intList[pmin] + intList[j];
-                        intList[i + 1] = intList[pmin] - intList[j];
-                        intList[pmin] = intList[pmin] - intList[j];
-                    }
-                
-            }
+                int i, j, piwot;
 
-            myListBox_select.ItemsSource = intList;
+                i = (lewy + prawy) / 2;
+                piwot = intList[i]; intList[i] = intList[prawy];
+                for (j = i = lewy; i < prawy; i++)
+                    if (intList[i] < piwot)
+                    {
+                        intList[i] = intList[i] + intList[j];
+                        intList[j] = intList[i] - intList[j];
+                        intList[i] = intList[i] - intList[j];
+                        j++;
+                    }
+                intList[prawy] = intList[j]; intList[j] = piwot;
+                if (lewy < j - 1) Sortuj_szybko(lewy, j - 1);
+                if (j + 1 < prawy) Sortuj_szybko(j + 1, prawy);
+            }
+            Sortuj_szybko(0, intList.Count - 1);
+
+            myListBox_Fast.ItemsSource = intList;
             stopwatch.Stop();
 
 
-            TextTimeBoxSelect.Text = "" + stopwatch.ElapsedMilliseconds;
+            TextTimeBoxFast.Text = "" + stopwatch.ElapsedMilliseconds;
         }
     }
  }
