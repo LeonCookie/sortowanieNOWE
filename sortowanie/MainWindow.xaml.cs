@@ -210,9 +210,10 @@ namespace sortowanie
                         for (i = 0; i < j; i++)
                             if (intList[i] > intList[i + 1])
                             {
-                                intList[i] = intList[i] + intList[i + 1];
-                                intList[i + 1] = intList[i] - intList[i + 1];
-                                intList[i] = intList[i] - intList[i + 1];
+                                int t = intList [i];
+                                intList[i] =  intList[i + 1];
+                                intList[i + 1] = t;
+                               
                                 p = 0;
                             }
                         if (p==1) break;
@@ -250,16 +251,16 @@ namespace sortowanie
                     //sortowanie
 
 
-                    pmin = 0; pmax = intList.Count - 1;
+                    pmin = 1; pmax = intList.Count - 1;
                     do
                     {
                         p = -1;
                         for (i = pmin; i < pmax; i++)
                             if (intList[i] > intList[i + 1])
                             {
-                                intList[i] = intList[i] + intList[i + 1];
-                                intList[i + 1] = intList[i] - intList[i + 1];
-                                intList[i] = intList[i] - intList[i + 1];
+                                int t = intList[i];
+                                intList[i] =  intList[i + 1];
+                                intList[i + 1] = t;
                                 if (p < 0) pmin = i;
                                 p = i;
                             }
@@ -333,7 +334,67 @@ namespace sortowanie
             TextBoxTime_Bomb_5.Text = "" + stopwatch.ElapsedMilliseconds;
         }
 
-        
+        private void btn_headsort_Click(object sender, RoutedEventArgs e)
+        {
+            List<int> intList = new List<int>();
+            for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
+            {
+                intList.Add(int.Parse(Lista[o]));
+
+            }
+            int N = intList.Count;
+            int i, j, k, m, x;
+
+            Stopwatch stopwatch = new Stopwatch();//zegar
+            stopwatch.Start();
+            //sortowanie
+
+            // Budujemy kopiec
+
+            for (i = 2; i <= N; i++)
+            {
+                j = i; k = j / 2;
+                x = intList[i];
+                while ((k > 0) && (intList[k] < x))
+                {
+                    intList[j] = intList[k];
+                    j = k; k = j / 2;
+                }
+                intList[j] = x;
+            }
+
+            // Rozbieramy kopiec
+
+            for (i = N; i > 1; i--)
+            {
+                intList[1] = intList[1] + intList[i];
+                intList[i] = intList[1] - intList[i];
+                intList[1] = intList[1] - intList[i];
+                j = 1; k = 2;
+                while (k < i)
+                {
+                    if ((k + 1 < i) && (intList[k + 1] > intList[k]))
+                        m = k + 1;
+                    else
+                        m = k;
+                    if (intList[m] <= intList[j]) break;
+                    intList[j] = intList[j] + intList[m];
+                    intList[m] = intList[j] - intList[m];
+                    intList[j] = intList[j] - intList[m];
+                    j = m; k = j + j;
+                }
+            }
+
+
+
+
+            myListBox_headsort.ItemsSource = intList;
+            stopwatch.Stop();
+
+
+            TextBoxTimeHeadsort.Text = "" + stopwatch.ElapsedMilliseconds;
+
+        }
 
         private void btn_select_Click(object sender, RoutedEventArgs e)
         {
@@ -373,59 +434,7 @@ namespace sortowanie
 
             TextTimeBoxFast.Text = "" + stopwatch.ElapsedMilliseconds;
         }
-        private void btn_headsort_Click(object sender, RoutedEventArgs e)
-        {
-            
-            List<int> intList = new List<int>();
-            for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
-            {
-                intList.Add(int.Parse(Lista[o]));
-
-            }
-            int x,k,j;
-            int d= intList.Count + 1;
-            Stopwatch stopwatch = new Stopwatch();//zegar
-
-            stopwatch.Start();
-            /*
-            for (i = 2; i <= intList.Count; i++)
-            {
-                j = i; k = j / 2;
-                x = d[i];
-                while ((k > 0) && (d[k] < x))
-                {
-                    d[j] = d[k];
-                    j = k; k = j / 2;
-                }
-                d[j] = x;
-            }
-            */
-            //
-
-
-
-
-
-            myListBox_headsort.ItemsSource = intList;
-            stopwatch.Stop();
-
-
-
-            TextBoxTimeHeadsort.Text = "" + stopwatch.ElapsedMilliseconds;
-        }
-        private void btn_Headsort_rozbior_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void btn_Headsort_sortowanie_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-
-
-
-        //scalenie
+        
         private void btn_scalenie_Click(object sender, RoutedEventArgs e)
         {
             
