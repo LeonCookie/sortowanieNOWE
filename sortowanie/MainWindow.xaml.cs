@@ -251,7 +251,7 @@ namespace sortowanie
                     //sortowanie
 
 
-                    pmin = 1; pmax = intList.Count - 1;
+                    pmin = 0; pmax = intList.Count-1 ;
                     do
                     {
                         p = -1;
@@ -265,7 +265,7 @@ namespace sortowanie
                                 p = i;
                             }
                         if (pmin>1) pmin--;
-                        pmax = p;
+                        pmax = p--;
                     } while (p >= 0);
 
 
