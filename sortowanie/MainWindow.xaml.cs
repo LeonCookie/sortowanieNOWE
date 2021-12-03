@@ -185,6 +185,8 @@ namespace sortowanie
             }
         }
 
+        
+
         private void btn_bomb_3_Click(object sender, RoutedEventArgs e)
         {
             {
@@ -228,6 +230,8 @@ namespace sortowanie
                 }
             }
         }
+
+        
 
         private void btn_bomb_4_Click(object sender, RoutedEventArgs e)
         {
@@ -364,6 +368,71 @@ namespace sortowanie
 
 
             TextTimeBoxFast.Text = "" + stopwatch.ElapsedMilliseconds;
+        }
+        private void btn_headsort_Click(object sender, RoutedEventArgs e)
+        {
+            List<int> intList = new List<int>();
+            for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
+            {
+                intList.Add(int.Parse(Lista[o]));
+
+            }
+            Stopwatch stopwatch = new Stopwatch();//zegar
+
+            stopwatch.Start();
+            //sortowanie
+
+
+
+
+
+            myListBox_headsort.ItemsSource = intList;
+            stopwatch.Stop();
+
+
+
+            TextBoxTimeHeadsort.Text = "" + stopwatch.ElapsedMilliseconds;
+        }
+        private void btn_scalenie_Click(object sender, RoutedEventArgs e)
+        {
+            
+            List<int> intList = new List<int>();
+            List<int> p = new List<int>();
+            for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
+            {
+                intList.Add(int.Parse(Lista[o]));
+
+            }
+            
+            Stopwatch stopwatch = new Stopwatch();//zegar
+
+            stopwatch.Start();
+            //sortowanie
+            void MergeSort(int i_p, int i_k)
+            {
+                int i_s, i1, i2, i;
+
+                i_s = (i_p + i_k + 1) / 2;
+                if (i_s - i_p > 1) MergeSort(i_p, i_s - 1);
+                if (i_k - i_s > 0) MergeSort(i_s, i_k);
+                i1 = i_p; i2 = i_s;
+                for (i = i_p; i <= i_k; i++)
+                    p[i] = ((i1 == i_s) || ((i2 <= i_k) && (intList[i1] > intList[i2]))) ? intList[i2++] : intList[i1++];
+                for (i = i_p; i <= i_k; i++) intList[i] = p[i];
+            }
+            
+            MergeSort(0, Lista.Count - 1);
+
+
+
+
+
+            myListBox_scalenie.ItemsSource = intList;
+            stopwatch.Stop();
+
+
+
+            TextBoxTimeScalenie.Text = "" + stopwatch.ElapsedMilliseconds;
         }
     }
  }
