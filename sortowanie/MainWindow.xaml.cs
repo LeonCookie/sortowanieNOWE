@@ -27,9 +27,11 @@ namespace sortowanie
 
         private void btn_load_Click(object sender, RoutedEventArgs e)
         {
-            
+            Lista.Clear();
+            myListbox.ItemsSource = "";
+            TabControl_Main.IsEnabled = true;
 
-        OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
         if (openFileDialog.ShowDialog() == true)
             {
                 using (var streamReader = File.OpenText(openFileDialog.FileName))// czytanie z pliku
