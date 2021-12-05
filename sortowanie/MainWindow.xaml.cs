@@ -27,6 +27,7 @@ namespace sortowanie
         List<String> Lista = new List<String>(); // nasza lista
         int i,j,p,pmin,pmax = 0;//dane potrzebne przy sortowanie tzw zmienne pomocnicze
         int Irepeat = 1;//ilosc powtorzen
+        
 
             
 
@@ -389,56 +390,52 @@ namespace sortowanie
                 intList.Add(int.Parse(Lista[o]));
 
             }
-            int N = intList.Count;
-            int i, j, k, m, x;
+            //do tego przykladu zmienimy nasza liste na tablice
+            int[] intTable = intList.ToArray();
 
             Stopwatch stopwatch = new Stopwatch();//zegar
             stopwatch.Start();
             //sortowanie
 
-            // Budujemy kopiec
+            static void heapSort(int[]arr , int n)
+            {
+                for (int i = n / 2 - 1; i >= 0; i--)
+                    heapify(arr, n, i);
+                for (int i = n - 1; i >= 0; i--)
+                {
+                    int temp = arr[0];
+                    arr[0] = arr[i];
+                    arr[i] = temp;
+                    heapify(arr, i, 0);
+                }
+            }
+            static void heapify(int[] arr , int n, int i)
+            {
+                int largest = i;
+                int left = 2 * i + 1;
+                int right = 2 * i + 2;
+                if (left < n && arr[left] > arr[largest])
+                    largest = left;
+                if (right < n && arr[right] > arr[largest])
+                    largest = right;
+                if (largest != i)
+                {
+                    int swap = arr[i];
+                    arr[i] = arr[largest];
+                    arr[largest] = swap;
+                    heapify(arr, n, largest);
+                }
+            }
             for (int l = 0; l < Irepeat; l++)
             {
-                for (i = 2; i <= N; i++)
-                            {
-                                j = i; k = j / 2;
-                                x = intList[i];
-                                while ((k > 0) && (intList[k] < x))
-                                {
-                                    intList[j] = intList[k];
-                                    j = k; k = j / 2;
-                                }
-                                intList[j] = x;
-                            }
-
-                            // Rozbieramy kopiec
-
-                            for (i = N; i > 1; i--)
-                            {
-                                intList[1] = intList[1] + intList[i];
-                                intList[i] = intList[1] - intList[i];
-                                intList[1] = intList[1] - intList[i];
-                                j = 1; k = 2;
-                                while (k < i)
-                                {
-                                    if ((k + 1 < i) && (intList[k + 1] > intList[k]))
-                                        m = k + 1;
-                                    else
-                                        m = k;
-                                    if (intList[m] <= intList[j]) break;
-                                    intList[j] = intList[j] + intList[m];
-                                    intList[m] = intList[j] - intList[m];
-                                    intList[j] = intList[j] - intList[m];
-                                    j = m; k = j + j;
-                                }
-                            }
+                heapSort(intTable,intList.Count);
             }
             
 
 
 
 
-            myListBox_headsort.ItemsSource = intList;
+            myListBox_headsort.ItemsSource = intTable;
             stopwatch.Stop();
 
 
