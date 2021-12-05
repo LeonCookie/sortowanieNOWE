@@ -26,13 +26,30 @@ namespace sortowanie
         //zmienne
         List<String> Lista = new List<String>(); // nasza lista
         int i,j,p,pmin,pmax = 0;//dane potrzebne przy sortowanie tzw zmienne pomocnicze
-        int many;//ilosc powtorzen
+        int Irepeat;//ilosc powtorzen
 
 
 
         private void NumberInput_previewtextinput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+            string text = NumberInput.Text;
+            
+            Debug.WriteLine(text);
+
+
+
+
+        }
+        private void btn_repeat_Click(object sender, RoutedEventArgs e)
+        {
+            string text = NumberInput.Text;
+            void NumberInput_previewtextinput(object sender, TextCompositionEventArgs e)
+            {
+                e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);// tylko liczby w NumberInput-  ilosc powtorzen
+            }
+            Irepeat = int.Parse(NumberInput.Text);
+            Debug.WriteLine(Irepeat);
         }
 
         private void btn_load_Click(object sender, RoutedEventArgs e) // wybor liczb
@@ -290,8 +307,6 @@ namespace sortowanie
 
             }
         }
-
-        
 
        
 
