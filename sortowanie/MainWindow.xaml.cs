@@ -4,6 +4,9 @@ using System.IO;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
+using System.Linq;
 
 namespace sortowanie
 {
@@ -23,9 +26,16 @@ namespace sortowanie
         //zmienne
         List<String> Lista = new List<String>(); // nasza lista
         int i,j,p,pmin,pmax = 0;//dane potrzebne przy sortowanie tzw zmienne pomocnicze
-        
+        int many;//ilosc powtorzen
 
-        private void btn_load_Click(object sender, RoutedEventArgs e)
+
+
+        private void NumberInput_previewtextinput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void btn_load_Click(object sender, RoutedEventArgs e) // wybor liczb
         {
             Lista.Clear();
             myListbox.ItemsSource = "";
@@ -58,7 +68,7 @@ namespace sortowanie
         }
 
 
-        private void btn_start_Click(object sender, RoutedEventArgs e) //button insert
+        private void btn_start_Click(object sender, RoutedEventArgs e) //Sortowanie przez wstawianie
         {
 
             
@@ -104,14 +114,11 @@ namespace sortowanie
 
        
 
-        private void lbFiles_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-
-        }
+        
 
        
 
-        private void btn_bomb_1_Click(object sender, RoutedEventArgs e)
+        private void btn_bomb_1_Click(object sender, RoutedEventArgs e)  //Sortowanie bąbelkowe - wersja 1
         {
            
             List<int> intList = new List<int>();
@@ -149,7 +156,7 @@ namespace sortowanie
 
         
 
-        private void btn_bomb_2_Click(object sender, RoutedEventArgs e)
+        private void btn_bomb_2_Click(object sender, RoutedEventArgs e) //Sortowanie bąbelkowe - wersja 2
         {
             {
                 
@@ -189,7 +196,7 @@ namespace sortowanie
 
         
 
-        private void btn_bomb_3_Click(object sender, RoutedEventArgs e)
+        private void btn_bomb_3_Click(object sender, RoutedEventArgs e) //Sortowanie bąbelkowe - wersja 3
         {
             {
                 {
@@ -236,7 +243,7 @@ namespace sortowanie
 
         
 
-        private void btn_bomb_4_Click(object sender, RoutedEventArgs e)
+        private void btn_bomb_4_Click(object sender, RoutedEventArgs e)//Sortowanie bąbelkowe - wersja 4- z błędem w postaci 1 pozycji(to co z Panem próbowałem rozwiązać na lekcji)
         {
             {
                 {
@@ -286,7 +293,9 @@ namespace sortowanie
 
         
 
-        private void btn_bomb_5_Click(object sender, RoutedEventArgs e)
+       
+
+        private void btn_bomb_5_Click(object sender, RoutedEventArgs e)//Sortowanie bąbelkowe - wersja 5
         {
             List<int> intList = new List<int>();
             for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
@@ -336,7 +345,7 @@ namespace sortowanie
             TextBoxTime_Bomb_5.Text = "" + stopwatch.ElapsedMilliseconds;
         }
 
-        private void btn_headsort_Click(object sender, RoutedEventArgs e)
+        private void btn_headsort_Click(object sender, RoutedEventArgs e) //Sortowanie przez kopcowanie
         {
              List<int> intList = new List<int>();
             for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
@@ -398,7 +407,7 @@ namespace sortowanie
 
         }
 
-        private void btn_select_Click(object sender, RoutedEventArgs e)
+        private void btn_select_Click(object sender, RoutedEventArgs e)// sortowanie szybkie
         {
             List<int> intList = new List<int>();
             for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
@@ -410,26 +419,40 @@ namespace sortowanie
 
             stopwatch.Start();
             //sortowanie
+
             void Sortuj_szybko(int lewy, int prawy)
             {
-                int i, j, piwot;
+                int i;
+                int j;
+                int piwot;
 
                 i = (lewy + prawy) / 2;
-                piwot = intList[i]; intList[i] = intList[prawy];
+                piwot = intList[i];
+                intList[i] = intList[prawy];
                 for (j = i = lewy; i < prawy; i++)
+                {
                     if (intList[i] < piwot)
                     {
-                        intList[i] = intList[i] + intList[j];
-                        intList[j] = intList[i] - intList[j];
-                        intList[i] = intList[i] - intList[j];
+                        //Swap (intList[i], intList[j]);
+                        (intList[i], intList[j]) = (intList[j],intList[j]);
+
                         j++;
                     }
-                intList[prawy] = intList[j]; intList[j] = piwot;
-                if (lewy < j - 1) Sortuj_szybko(lewy, j - 1);
-                if (j + 1 < prawy) Sortuj_szybko(j + 1, prawy);
-            }
-            Sortuj_szybko(0, intList.Count - 1);
+                }
+                intList[prawy] = intList[j];
+                intList[j] = piwot;
+                if (lewy < j - 1)
+                {
+                    Sortuj_szybko(lewy, j - 1);
+                }
+                if (j + 1 < prawy)
+                {
+                    Sortuj_szybko(j + 1, prawy);
+                }
 
+            }
+
+            Sortuj_szybko(0, intList.Count - 1);
             myListBox_Fast.ItemsSource = intList;
             stopwatch.Stop();
 
@@ -437,7 +460,7 @@ namespace sortowanie
             TextTimeBoxFast.Text = "" + stopwatch.ElapsedMilliseconds;
         }
         
-        private void btn_scalenie_Click(object sender, RoutedEventArgs e)
+        private void btn_scalenie_Click(object sender, RoutedEventArgs e) //sortowanie scalenie
         {
             
             List<int> intList = new List<int>();

@@ -9,7 +9,7 @@
     <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
         <Button x:Name="btn_load" Content="wybierz" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="btn_load_Click"/>
         <ListBox x:Name="myListbox" Margin="10,35,0,164" HorizontalAlignment="Left" Width="70"/>
-        <TextBlock HorizontalAlignment="Left" Margin="246,12,0,0" Text="Posortowane" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="258,12,0,0" Text="Posortowane" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.178,-1.521"/>
         <TabControl x:Name="TabControl_Main" Margin="246,35,0,0" IsEnabled="False" >
             <TabItem Header="Wstawienie">
                 <Grid Background="#FFE5E5E5">
@@ -98,8 +98,8 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="-111,35,0,0" VerticalAlignment="Top"/>
-
+        <TextBlock HorizontalAlignment="Left" Margin="128,14,0,0" Text="Ilość powtrórzeń" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="NumberInput" HorizontalAlignment="Left" Margin="121,35,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.022,0.088" Height="20" PreviewTextInput="NumberInput_previewtextinput"  />
 
 
     </Grid>
