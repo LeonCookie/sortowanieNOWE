@@ -97,6 +97,16 @@
 
                 </Grid>
             </TabItem>
+            <TabItem Header="Własne">
+                <Grid Background="#FFE5E5E5">
+                    <Button x:Name="btn_wlasne" Content="Start
+" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" Width="88" Click="btn_wlasne_Click"/>
+                    <ListBox x:Name="myListBox_wlasne" Margin="230,71,230,31"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" Text="Jako, że używam listy, moge uzyc funkcji .sort();" TextWrapping="Wrap" VerticalAlignment="Top" Height="74" Width="140"/>
+                    <TextBox x:Name="TextBox_time_wlasne" HorizontalAlignment="Center" Margin="0,33,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="88"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="155,34,0,0" Text="Czas(w ms):" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
         </TabControl>
         <TextBlock HorizontalAlignment="Left" Margin="100,14,0,0" Text="Ilość powtrórzeń" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
         <TextBox x:Name="NumberInput" HorizontalAlignment="Left" Margin="100,35,0,0"  Text="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.022,0.088" Height="20" PreviewTextInput="NumberInput_previewtextinput"  />

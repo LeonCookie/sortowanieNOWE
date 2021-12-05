@@ -393,6 +393,7 @@ namespace sortowanie
             //do tego przykladu zmienimy nasza liste na tablice
             int[] intTable = intList.ToArray();
 
+            
             Stopwatch stopwatch = new Stopwatch();//zegar
             stopwatch.Start();
             //sortowanie
@@ -537,7 +538,35 @@ namespace sortowanie
 
             TextBoxTimeScalenie.Text = "" + stopwatch.ElapsedMilliseconds;
         }
-        
+        private void btn_wlasne_Click(object sender, RoutedEventArgs e)
+        {
+            List<int> intList = new List<int>();
+
+            for (int o = 0; o < Lista.Count; o++)     //zamiany list string na list int
+            {
+                intList.Add(int.Parse(Lista[o]));
+
+            }
+
+            Stopwatch stopwatch = new Stopwatch();//zegar
+
+            stopwatch.Start();
+            //sortowanie
+            for (int l = 0; l < Irepeat; l++)
+            {
+                intList.Sort();
+            }
+
+
+
+            myListBox_wlasne.ItemsSource = intList;
+            stopwatch.Stop();
+
+
+
+            TextBox_time_wlasne.Text = "" + stopwatch.ElapsedMilliseconds;
+        }
     }
- }
+    
+}
 
