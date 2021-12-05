@@ -451,6 +451,9 @@ namespace sortowanie
                 intList.Add(int.Parse(Lista[o]));
 
             }
+            //do tego przykladu zmienimy nasza liste na tablice
+            int[] intTable = intList.ToArray();
+
             Stopwatch stopwatch = new Stopwatch();//zegar
 
             stopwatch.Start();
@@ -458,35 +461,19 @@ namespace sortowanie
 
             void Sortuj_szybko(int lewy, int prawy)
             {
-                int i;
-                int j;
-                int piwot;
+                int i, j, piwot;
 
                 i = (lewy + prawy) / 2;
-                piwot = intList[i];
-                intList[i] = intList[prawy];
+                piwot = intTable[i]; intTable[i] = intTable[prawy];
                 for (j = i = lewy; i < prawy; i++)
-                {
-                    if (intList[i] < piwot)
+                    if (intTable[i] < piwot)
                     {
-                        //Swap (intList[i], intList[j]);
-                        (intList[i], intList[j]) = (intList[j], intList[j]);
-
+                        (intTable[i], intTable[j]) = (intTable[j], intTable[i]);
                         j++;
                     }
-                }
-                intList[prawy] = intList[j];
-                intList[j] = piwot;
-                if (lewy < j - 1)
-                {
-                    Sortuj_szybko(lewy, j - 1);
-                }
-                if (j + 1 < prawy)
-                {
-                    Sortuj_szybko(j + 1, prawy);
-                }
-
-
+                intTable[prawy] = intTable[j]; intTable[j] = piwot;
+                if (lewy < j - 1) Sortuj_szybko(lewy, j - 1);
+                if (j + 1 < prawy) Sortuj_szybko(j + 1, prawy);
             }
 
 
