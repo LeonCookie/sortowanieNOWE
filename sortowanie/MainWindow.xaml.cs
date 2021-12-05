@@ -21,14 +21,14 @@ namespace sortowanie
         {
             InitializeComponent();
 
-
+           
         }
         //zmienne
         List<String> Lista = new List<String>(); // nasza lista
         int i,j,p,pmin,pmax = 0;//dane potrzebne przy sortowanie tzw zmienne pomocnicze
-        int Irepeat;//ilosc powtorzen
+        int Irepeat = 1;//ilosc powtorzen
 
-
+            
 
         private void NumberInput_previewtextinput(object sender, TextCompositionEventArgs e)
         {
@@ -43,13 +43,15 @@ namespace sortowanie
         }
         private void btn_repeat_Click(object sender, RoutedEventArgs e)
         {
-            string text = NumberInput.Text;
+
+            Irepeat = 1;
             void NumberInput_previewtextinput(object sender, TextCompositionEventArgs e)
             {
                 e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);// tylko liczby w NumberInput-  ilosc powtorzen
             }
             Irepeat = int.Parse(NumberInput.Text);
             Debug.WriteLine(Irepeat);
+            repeat_value.Text = "" + Irepeat;
         }
 
         private void btn_load_Click(object sender, RoutedEventArgs e) // wybor liczb
@@ -104,22 +106,26 @@ namespace sortowanie
 
             stopwatch.Start();
             //sortowanie
-
-            for (j = intList.Count - 2; j >= 0; j--)
+            for (int l = 0; l < Irepeat; l++)
             {
-                
-                int x = intList[j];
-                i = j + 1;
-                
-                while ((i < intList.Count) && (x > intList[i]))
+                for (j = intList.Count - 2; j >= 0; j--)
                 {
-                    intList[i - 1] = intList[i];
-                    i++;
-                }
-                intList[i - 1] = x;
 
+                    int x = intList[j];
+                    i = j + 1;
+
+                    while ((i < intList.Count) && (x > intList[i]))
+                    {
+                        intList[i - 1] = intList[i];
+                        i++;
+                    }
+                    intList[i - 1] = x;
+
+                }
+                myListbox_Sort.ItemsSource = intList;
             }
-            myListbox_Sort.ItemsSource = intList;
+
+            
 
             stopwatch.Stop();
 
@@ -148,18 +154,21 @@ namespace sortowanie
 
             stopwatch.Start();
             //sortowanie
-
-
+            for (int l = 0; l < Irepeat; l++)
+            {
             for (j = 0; j < intList.Count - 1; j++)
-                for (i = 0; i < intList.Count - 1; i++)
-                    if (intList[i] > intList[i + 1])
-                    {
-                       //w c++ jest funkcja swap, ktora zamienia wartosci, jednakze tutaj uzyjemy tradycyjnej metody z a i b 
-                        intList[i] = intList[i] + intList[i + 1];  
-                        intList[i + 1]= intList[i] - intList[i + 1];
-                        intList[i] = intList[i] - intList[i + 1];
+                            for (i = 0; i < intList.Count - 1; i++)
+                                if (intList[i] > intList[i + 1])
+                                {
+                                   //w c++ jest funkcja swap, ktora zamienia wartosci, jednakze tutaj uzyjemy tradycyjnej metody z a i b 
+                                    intList[i] = intList[i] + intList[i + 1];  
+                                    intList[i + 1]= intList[i] - intList[i + 1];
+                                    intList[i] = intList[i] - intList[i + 1];
 
-                    }
+                                }
+            }
+
+            
 
                         
 
@@ -188,17 +197,20 @@ namespace sortowanie
                 stopwatch.Start();
                 //sortowanie
 
+                for (int l = 0; l < Irepeat; l++)
+                {
+                    for (j = intList.Count - 1; j > 0; j--)
+                                        for (i = 0; i < j; i++)
+                                            if (intList[i] > intList[i + 1]) 
+                                            {
+                                                //w c++ jest funkcja swap, ktora zamienia wartosci, jednakze tutaj uzyjemy tradycyjnej metody z a i b 
+                                                intList[i] = intList[i] + intList[i + 1];
+                                                intList[i + 1] = intList[i] - intList[i + 1];
+                                                intList[i] = intList[i] - intList[i + 1];
 
-                for (j = intList.Count - 1; j > 0; j--)
-                    for (i = 0; i < j; i++)
-                        if (intList[i] > intList[i + 1]) 
-                        {
-                            //w c++ jest funkcja swap, ktora zamienia wartosci, jednakze tutaj uzyjemy tradycyjnej metody z a i b 
-                            intList[i] = intList[i] + intList[i + 1];
-                            intList[i + 1] = intList[i] - intList[i + 1];
-                            intList[i] = intList[i] - intList[i + 1];
-
-                        }
+                                            }
+                }
+                
 
 
 
@@ -229,21 +241,24 @@ namespace sortowanie
                     stopwatch.Start();
                     //sortowanie
 
-
-                    for (j = intList.Count - 1; j > 0; j--)
+                    for (int l = 0; l < Irepeat; l++)
                     {
-                        p = 1;
-                        for (i = 0; i < j; i++)
-                            if (intList[i] > intList[i + 1])
-                            {
-                                int t = intList [i];
-                                intList[i] =  intList[i + 1];
-                                intList[i + 1] = t;
+                    for (j = intList.Count - 1; j > 0; j--)
+                                        {
+                                            p = 1;
+                                            for (i = 0; i < j; i++)
+                                                if (intList[i] > intList[i + 1])
+                                                {
+                                                    int t = intList [i];
+                                                    intList[i] =  intList[i + 1];
+                                                    intList[i + 1] = t;
                                
-                                p = 0;
-                            }
-                        if (p==1) break;
+                                                    p = 0;
+                                                }
+                                            if (p==1) break;
+                                        }
                     }
+                    
 
 
 
@@ -275,24 +290,27 @@ namespace sortowanie
 
                     stopwatch.Start();
                     //sortowanie
-
-
-                    pmin = 0; pmax = intList.Count-1 ;
-                    do
+                    for (int l = 0; l < Irepeat; l++)
                     {
-                        p = -1;
-                        for (i = pmin; i < pmax; i++)
-                            if (intList[i] > intList[i + 1])
-                            {
-                                int t = intList[i];
-                                intList[i] =  intList[i + 1];
-                                intList[i + 1] = t;
-                                if (p < 0) pmin = i;
-                                p = i;
-                            }
-                        if (pmin>1) pmin--;
-                        pmax = p--;
-                    } while (p >= 0);
+                        pmin = 0; pmax = intList.Count-1 ;
+                                            do
+                                            {
+                                                p = -1;
+                                                for (i = pmin; i < pmax; i++)
+                                                    if (intList[i] > intList[i + 1])
+                                                    {
+                                                        int t = intList[i];
+                                                        intList[i] =  intList[i + 1];
+                                                        intList[i + 1] = t;
+                                                        if (p < 0) pmin = i;
+                                                        p = i;
+                                                    }
+                                                if (pmin>1) pmin--;
+                                                pmax = p--;
+                                            } while (p >= 0);
+                    }
+
+                    
 
 
 
@@ -308,7 +326,7 @@ namespace sortowanie
             }
         }
 
-       
+        
 
         private void btn_bomb_5_Click(object sender, RoutedEventArgs e)//Sortowanie bąbelkowe - wersja 5
         {
@@ -322,33 +340,36 @@ namespace sortowanie
 
             stopwatch.Start();
             //sortowanie
-
-
-            pmin = 0; pmax = intList.Count - 2;
-            do
+            for (int l = 0; l < Irepeat; l++)
             {
-                p = -1;
-                for (i = pmin; i <= pmax; i++)
-                    if (intList[i] > intList[i + 1])
-                    {
-                        intList[i] = intList[i] + intList[i + 1];
-                        intList[i + 1] = intList[i] - intList[i + 1];
-                        intList[i] = intList[i] - intList[i + 1];
-                        p = i;
-                    }
-                if (p < 0) break;
-                pmax = p - 1;
-                p = -1;
-                for (i = pmax; i >= pmin; i--)
-                    if (intList[i] > intList[i + 1])
-                    {
-                        intList[i] = intList[i] + intList[i + 1];
-                        intList[i + 1] = intList[i] - intList[i + 1];
-                        intList[i] = intList[i] - intList[i + 1];
-                        p = i;
-                    }
-                pmin = p + 1;
-            } while (p >= 0);
+                pmin = 0; pmax = intList.Count - 2;
+                            do
+                            {
+                                p = -1;
+                                for (i = pmin; i <= pmax; i++)
+                                    if (intList[i] > intList[i + 1])
+                                    {
+                                        intList[i] = intList[i] + intList[i + 1];
+                                        intList[i + 1] = intList[i] - intList[i + 1];
+                                        intList[i] = intList[i] - intList[i + 1];
+                                        p = i;
+                                    }
+                                if (p < 0) break;
+                                pmax = p - 1;
+                                p = -1;
+                                for (i = pmax; i >= pmin; i--)
+                                    if (intList[i] > intList[i + 1])
+                                    {
+                                        intList[i] = intList[i] + intList[i + 1];
+                                        intList[i + 1] = intList[i] - intList[i + 1];
+                                        intList[i] = intList[i] - intList[i + 1];
+                                        p = i;
+                                    }
+                                pmin = p + 1;
+                            } while (p >= 0);
+            }
+
+            
 
 
 
@@ -376,40 +397,43 @@ namespace sortowanie
             //sortowanie
 
             // Budujemy kopiec
-
-            for (i = 2; i <= N; i++)
+            for (int l = 0; l < Irepeat; l++)
             {
-                j = i; k = j / 2;
-                x = intList[i];
-                while ((k > 0) && (intList[k] < x))
-                {
-                    intList[j] = intList[k];
-                    j = k; k = j / 2;
-                }
-                intList[j] = x;
-            }
+                for (i = 2; i <= N; i++)
+                            {
+                                j = i; k = j / 2;
+                                x = intList[i];
+                                while ((k > 0) && (intList[k] < x))
+                                {
+                                    intList[j] = intList[k];
+                                    j = k; k = j / 2;
+                                }
+                                intList[j] = x;
+                            }
 
-            // Rozbieramy kopiec
+                            // Rozbieramy kopiec
 
-            for (i = N; i > 1; i--)
-            {
-                intList[1] = intList[1] + intList[i];
-                intList[i] = intList[1] - intList[i];
-                intList[1] = intList[1] - intList[i];
-                j = 1; k = 2;
-                while (k < i)
-                {
-                    if ((k + 1 < i) && (intList[k + 1] > intList[k]))
-                        m = k + 1;
-                    else
-                        m = k;
-                    if (intList[m] <= intList[j]) break;
-                    intList[j] = intList[j] + intList[m];
-                    intList[m] = intList[j] - intList[m];
-                    intList[j] = intList[j] - intList[m];
-                    j = m; k = j + j;
-                }
+                            for (i = N; i > 1; i--)
+                            {
+                                intList[1] = intList[1] + intList[i];
+                                intList[i] = intList[1] - intList[i];
+                                intList[1] = intList[1] - intList[i];
+                                j = 1; k = 2;
+                                while (k < i)
+                                {
+                                    if ((k + 1 < i) && (intList[k + 1] > intList[k]))
+                                        m = k + 1;
+                                    else
+                                        m = k;
+                                    if (intList[m] <= intList[j]) break;
+                                    intList[j] = intList[j] + intList[m];
+                                    intList[m] = intList[j] - intList[m];
+                                    intList[j] = intList[j] - intList[m];
+                                    j = m; k = j + j;
+                                }
+                            }
             }
+            
 
 
 
@@ -449,7 +473,7 @@ namespace sortowanie
                     if (intList[i] < piwot)
                     {
                         //Swap (intList[i], intList[j]);
-                        (intList[i], intList[j]) = (intList[j],intList[j]);
+                        (intList[i], intList[j]) = (intList[j], intList[j]);
 
                         j++;
                     }
@@ -465,9 +489,18 @@ namespace sortowanie
                     Sortuj_szybko(j + 1, prawy);
                 }
 
+
             }
 
-            Sortuj_szybko(0, intList.Count - 1);
+
+            for (int l = 0; l < Irepeat; l++)
+            {
+                Sortuj_szybko(0, intList.Count - 1);
+            }
+
+
+
+                
             myListBox_Fast.ItemsSource = intList;
             stopwatch.Stop();
 
@@ -504,9 +537,12 @@ namespace sortowanie
                 for (i = i_p; i <= i_k; i++) intList[i] = p[i];
             }
             
-            MergeSort(0, Lista.Count - 1);
+            
 
-
+            for (int l = 0; l < Irepeat; l++)
+            {
+                MergeSort(0, Lista.Count - 1);
+            }
 
 
 

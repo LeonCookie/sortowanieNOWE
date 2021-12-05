@@ -99,8 +99,10 @@
             </TabItem>
         </TabControl>
         <TextBlock HorizontalAlignment="Left" Margin="100,14,0,0" Text="Ilość powtrórzeń" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
-        <TextBox x:Name="NumberInput" HorizontalAlignment="Left" Margin="100,35,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.022,0.088" Height="20" PreviewTextInput="NumberInput_previewtextinput"  />
+        <TextBox x:Name="NumberInput" HorizontalAlignment="Left" Margin="100,35,0,0"  Text="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.022,0.088" Height="20" PreviewTextInput="NumberInput_previewtextinput"  />
         <Button x:Name="btn_repeat" Content="potwierdź ilość powtorzeń" HorizontalAlignment="Left" Margin="100,60,0,0" VerticalAlignment="Top" Width="141" Click="btn_repeat_Click"/>
+        <TextBox x:Name="repeat_value" HorizontalAlignment="Left" Margin="706,12,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <TextBlock HorizontalAlignment="Left" Margin="583,13,0,0" Text="Ustawiono powtórzeń:" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.058,0.289"/>
 
 
     </Grid>
