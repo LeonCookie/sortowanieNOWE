@@ -457,31 +457,51 @@ namespace sortowanie
 
             Stopwatch stopwatch = new Stopwatch();//zegar
 
-            stopwatch.Start();
-            //sortowanie
 
+            //sortowanie
             void Sortuj_szybko(int lewy, int prawy)
             {
-                int i, j, piwot;
+                int i;
+                int j;
+                int piwot;
 
                 i = (lewy + prawy) / 2;
-                piwot = intTable[i]; intTable[i] = intTable[prawy];
+                piwot = intTable[i];
+                intTable[i] = intTable[prawy];
                 for (j = i = lewy; i < prawy; i++)
+                {
                     if (intTable[i] < piwot)
                     {
-                        (intTable[i], intTable[j]) = (intTable[j], intTable[i]);
+                        //swap(intTable[i], intTable[j]);
+                        intTable[i] = intTable[i] + intTable[j];
+                        intTable[j] = intTable[i] - intTable[j];
+                        intTable[i] = intTable[i] - intTable[j];
                         j++;
                     }
-                intTable[prawy] = intTable[j]; intTable[j] = piwot;
-                if (lewy < j - 1) Sortuj_szybko(lewy, j - 1);
-                if (j + 1 < prawy) Sortuj_szybko(j + 1, prawy);
+                }
+                intTable[prawy] = intTable[j];
+                intTable[j] = piwot;
+                if (lewy < j - 1)
+                {
+                    Sortuj_szybko(lewy, j - 1);
+                }
+                if (j + 1 < prawy)
+                {
+                    Sortuj_szybko(j + 1, prawy);
+                }
             }
 
 
-            for (int l = 0; l < Irepeat; l++)
-            {
-                Sortuj_szybko(0, intList.Count - 1);
-            }
+
+
+            stopwatch.Start();
+
+
+
+
+
+
+            Sortuj_szybko(0, intList.Count - 1);
 
 
 
